@@ -8,16 +8,16 @@ spring:
   cloud:
     gateway:
       routes:
-        # Ruta para reenviar al monolito
-        - id: monolith-route
-          uri: http://localhost:8081
-          predicates:
-            - Path=/api/v1/**
         # Ruta para servicio de inventario
         - id: inventory-service-route
           uri: http://localhost:8082
           predicates:
             - Path=/api/v1/inventory/**
+        # Ruta para reenviar al monolito
+        - id: monolith-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/v1/**
 
       globalcors:
         corsConfigurations:
